@@ -135,7 +135,7 @@ def parse(
             [ os.path.join(input_dir, chain_id, name) for name in names ]
         for chain_id in chain_ids
     }
-    # print(grouped_paths)
+    #print(grouped_paths)
     if any(
         not all(os.path.exists(_) for _ in paths) for paths in 
         grouped_paths.values()
