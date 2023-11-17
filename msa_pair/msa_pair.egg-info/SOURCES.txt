@@ -1,0 +1,7 @@
+setup.py
+msa_pair/__init__.py
+msa_pair.egg-info/PKG-INFO
+msa_pair.egg-info/SOURCES.txt
+msa_pair.egg-info/dependency_links.txt
+msa_pair.egg-info/requires.txt
+msa_pair.egg-info/top_level.txt
