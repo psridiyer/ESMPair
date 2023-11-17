@@ -38,9 +38,9 @@ def pair_rows(input_dir, src_score_path, dst_pr_path, tag, overwrite=False):
         species_dict, msas_dict, sequences_scores
     )
     # print(paired_rows_dict)
-    # print(paired_rows_dict["A"])
-    # print(paired_rows_dict["A"][:10])
-    # print(paired_rows_dict["B"][:10])
+    print(paired_rows_dict["A"])
+    print(paired_rows_dict["A"][:10])
+    print(paired_rows_dict["B"][:10])
     # exit()
 
     with open(dst_pr_path, 'wt') as fh:
@@ -87,13 +87,15 @@ if __name__ == '__main__':
     err_dirs = []
     for name in tqdm(total_dir_list):
         input_dir = os.path.join(input_root, name)
-        
+        output_dir = os.path.abspath(os.getcwd())
         # calculate and save the column attention score
-        score_path = os.path.join(input_dir, f'{tag}_scores_{max_per_msa}.json')
+        score_path = os.path.join(output_dir, f'{tag}_scores_{max_per_msa}.json')
         if not os.path.exists(score_path):
             compute_scores(input_dir, score_path, tag, int(max_per_msa))
         
         # 
-        pr_path = os.path.join(input_dir, f'{tag}_pr_{max_per_msa}.json')
+        pr_path = os.path.join(output_dir, f'{tag}_pr_{max_per_msa}.json')
         if not os.path.exists(pr_path):
             pair_rows(input_dir, score_path, pr_path, tag)
+
+    print ("Paired Attn Scores and Pairs saved in ", score_path)
